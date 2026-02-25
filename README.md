@@ -1,53 +1,53 @@
-Projeto desenvolvido para a disciplina de Programação Client-Side.
+# 🌐 Portal de Gerenciamento Pessoal
 
-# Utility Portal
+Um hub centralizado de ferramentas utilitárias desenvolvido com **React, TypeScript e TailwindCSS**. O objetivo deste projeto é oferecer uma experiência fluida e persistente para a organização de tarefas, contatos e finanças em um único lugar.
 
-## Visão do Produto
+---
 
-O Utility Portal é uma aplicação web que reúne diferentes ferramentas utilitárias em um único lugar, permitindo ao usuário organizar tarefas, gerenciar contatos e controlar gastos de forma simples e prática.
+## 🎯 Visão do Produto
+O **Portal de Gerenciamento Pessoal** entrega valor ao usuário final ao centralizar as principais necessidades de organização diária em uma interface intuitiva. Diferente de ferramentas isoladas, este portal garante que dados de produtividade (TaskMaster), networking (ConnectHub) e saúde financeira (MoneyFlow) estejam a um clique de distância, com persistência de dados local que dispensa configurações complexas de login para uso imediato.
 
-A aplicação foi desenvolvida utilizando React com TypeScript e possui persistência de dados através do LocalStorage, garantindo que as informações continuem disponíveis mesmo após o recarregamento da página.
+---
 
-O objetivo do projeto é oferecer uma interface intuitiva e funcional que facilite a organização do dia a dia do usuário.
+## ⚡ Planejamento Ágil (Sprint Bakclog)
 
-## User Stories (Módulo TaskMaster)
+### 1. User Stories (Módulo TaskMaster)
 
-1. **Como usuário, eu quero adicionar uma nova tarefa para organizar minhas atividades diárias.**
-2. **Como usuário, eu quero categorizar minhas tarefas (Trabalho, Pessoal, Urgente) para priorizar melhor.**
-3. **Como usuário, eu quero listar todas as minhas tarefas para visualizar o que preciso fazer.**
-4. **Como usuário, eu quero remover tarefas concluídas para manter a lista limpa.**
-5. **Como usuário, eu quero que minhas tarefas sejam salvas automaticamente para não perder dados ao recarregar a página.**
+Seguindo o padrão de metodologias ágeis, mapeamos as necessidades do módulo de tarefas:
 
-## Critérios de Aceitação
+1. **Adição de Tarefas:** Como usuário, eu quero adicionar novas tarefas com título e categoria para que eu possa organizar minhas pendências do dia.
+2. **Validação de Segurança:** Como usuário, eu quero que o sistema me impeça de criar tarefas curtas demais para garantir que os títulos sejam descritivos e úteis.
+3. **Remoção de Itens:** Como usuário, eu quero poder excluir tarefas concluídas ou canceladas para manter minha lista limpa e atualizada.
+4. **Categorização:** Como usuário, eu quero classificar minhas tarefas entre "Trabalho", "Pessoal" e "Urgente" para priorizar visualmente o que é mais importante.
+5. **Persistência de Dados:** Como usuário, eu quero que minhas tarefas continuem salvas mesmo se eu fechar o navegador, para não perder meu planejamento.
 
-Para cada User Story do TaskMaster, os seguintes critérios técnicos devem ser atendidos:
+---
 
-1. **Adicionar tarefa**:
-   - O campo título deve aceitar no mínimo 5 caracteres.
-   - A categoria deve ser selecionada obrigatoriamente.
-   - A tarefa deve aparecer na lista imediatamente após a adição.
+### 2. Critérios de Aceitação (Definition of Done)
 
-2. **Categorizar tarefas**:
-   - As opções de categoria devem ser Trabalho, Pessoal e Urgente.
-   - A categoria deve ser exibida junto ao título na lista.
-   - Deve ser possível filtrar ou visualizar tarefas por categoria (opcional, mas recomendado).
+Para cada estória acima, os seguintes requisitos técnicos devem ser atendidos:
 
-3. **Listar tarefas**:
-   - Todas as tarefas devem ser exibidas em uma lista clara.
-   - Cada tarefa deve mostrar título e categoria.
-   - A lista deve ser atualizada em tempo real após adições ou remoções.
+* **Story 1 & 4 (Cadastro):** O formulário deve utilizar `react-hook-form` e o campo de categoria deve ser um `select` com as opções pré-definidas.
+* **Story 2 (Validação):** O schema do `Zod` deve disparar um erro visual se o campo "Título" tiver menos de 5 caracteres.
+* **Story 3 (Exclusão):** A função de remoção deve atualizar o estado do React e refletir imediatamente no `localStorage`.
+* **Story 5 (Persistência):** O componente deve utilizar um `useEffect` para carregar os dados do `localStorage` no montagem da página.
 
-4. **Remover tarefas**:
-   - Cada tarefa deve ter um botão de remoção.
-   - Ao remover, a tarefa deve desaparecer da lista e do localStorage.
-   - Deve haver confirmação ou feedback visual da remoção.
+---
 
-5. **Persistência automática**:
-   - Os dados devem ser salvos no localStorage após cada adição ou remoção.
-   - Ao recarregar a página, as tarefas devem ser carregadas automaticamente.
-   - Não deve haver perda de dados em caso de erro ou recarregamento.
+### 3. Milestones (Marcos do Projeto)
 
-## Milestones
+* **M1 - Fundações e Navegação:** Configuração do ambiente (Vite + TS + Tailwind), implementação do React Router Dom e criação da Navbar e Home Dashboard.
+* **M2 - Módulos de Dados e Persistência:** Finalização dos formulários TaskMaster, ConnectHub e MoneyFlow com validações Zod e integração total com LocalStorage.
 
-1. **M1 - Estrutura de Rotas e Home**: Implementar o roteamento com React Router Dom, criar a página Home com cards de navegação e configurar a Navbar persistente.
-2. **M2 - Finalização dos Módulos de Dados**: Desenvolver os módulos TaskMaster, ConnectHub e MoneyFlow com formulários, validações Zod, persistência localStorage e listagem de dados.
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **React + Vite**
+* **TypeScript** (Tipagem Estrita)
+* **TailwindCSS** (Design Responsivo)
+* **React Hook Form + Zod** (Validação de Formulários)
+* **React Router Dom** (Navegação SPA)
+* **LocalStorage API** (Persistência)
+
+---
