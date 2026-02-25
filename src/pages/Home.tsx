@@ -2,41 +2,49 @@ import { Link } from "react-router-dom"
 
 export function Home() {
   return (
-    <div className="container-page items-center">
+    <div className="home-container">
 
-      <h1 className="titulo-pagina">
-        Portal Utilitário
-      </h1>
+      <div className="home-header">
+        <h1 className="home-titulo">Bem-vindo ao Gerenciador Pessoal</h1>
+        <p className="home-subtitulo">Organize sua vida com eficiência e simplicidade</p>
+      </div>
 
-      <div className="grid-cards">
+      <div className="home-grid">
 
-        <Link to="/tasks">
-          <div className="card-home">
-            <h2 className="text-lg font-semibold mb-2">Gerenciador de tarefas</h2>
-            <p className="text-gray-600 text-sm">
-              Gerencie suas tarefas do dia a dia
+        <Link to="/tasks" className="home-link">
+          <div className="home-card">
+            <h2 className="home-card-titulo">Tarefas</h2>
+            <p className="home-card-descricao">
+              Mantenha suas tarefas organizadas, defina prioridades e acompanhe seu progresso.
             </p>
+            <div className="home-card-arrow">→</div>
           </div>
         </Link>
 
-        <Link to="/contacts">
-          <div className="card-home">
-            <h2 className="text-lg font-semibold mb-2">ConnectHub</h2>
-            <p className="text-gray-600 text-sm">
-              Cadastre e organize seus contatos
+        <Link to="/contacts" className="home-link">
+          <div className="home-card">
+            <h2 className="home-card-titulo">Contatos</h2>
+            <p className="home-card-descricao">
+              Mantenha seus contatos organizados e sempre à mão quando precisar deles         
             </p>
+            <div className="home-card-arrow">→</div>
           </div>
         </Link>
 
-        <Link to="/finance">
-          <div className="card-home">
-            <h2 className="text-lg font-semibold mb-2">Controle financeiro</h2>
-            <p className="text-gray-600 text-sm">
-              Controle simples de gastos
+        <Link to="/finance" className="home-link">
+          <div className="home-card">
+            <h2 className="home-card-titulo">Controle financeiro</h2>
+            <p className="home-card-descricao">
+              Acompanhe suas transações e mantenha o controle de suas finanças de forma simples e eficiente.
             </p>
+            <div className="home-card-arrow">→</div>
           </div>
         </Link>
 
+      </div>
+
+      <div className="home-footer">
+        <p>Escolha um módulo acima para começar a gerenciar sua rotina</p>
       </div>
 
     </div>

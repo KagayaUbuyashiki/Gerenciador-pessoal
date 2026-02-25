@@ -31,10 +31,29 @@ export function ConnectHub() {
     return `${horas}:${minutos}`
   }
 
+  function formatPhoneBR(raw: string): string {
+    if (!raw) return ""
+    let digits = raw.replace(/\D/g, "")
+    digits = digits.replace(/^0+/, "")
+    if (digits.startsWith("55")) digits = digits.slice(2)
+
+    const area = digits.slice(0, 2)
+    const number = digits.slice(2)
+    if (!area) return raw
+    if (!number) return `+55 (${area})`
+
+    const last4 = number.slice(-4)
+    const firstPart = number.slice(0, number.length - 4)
+    const formattedNumber = firstPart ? `${firstPart}-${last4}` : last4
+
+    return `+55 (${area}) ${formattedNumber}`
+  }
+
   function onSubmit(data: ContactFormData) {
 
     const contatoComTimestamp: ContactWithTimestamp = {
       ...data,
+      telefone: formatPhoneBR(data.telefone as string),
       timestamp: new Date().toISOString()
     }
 
@@ -57,13 +76,14 @@ export function ConnectHub() {
   }
 
   return (
-    <div className="container-page">
+    <div className="page-container page-contacts">
 
-      <div className="container-content">
+      <div className="page-header">
+        <h1 className="page-titulo">ConnectHub</h1>
+        <p className="page-subtitulo">Mantenha seus contatos sempre organizados e à mão</p>
+      </div>
 
-        <h1 className="titulo-pagina">
-          ConnectHub
-        </h1>
+      <div className="page-content">
 
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -118,8 +138,8 @@ export function ConnectHub() {
         <div className="lista-itens">
 
           {contacts.length === 0 ? (
-            <p className="text-center text-gray-500 py-4">
-              Nenhum contato adicionado ainda
+            <p className="empty-state">
+              Nenhum contato adicionado ainda. Comece adicionando um contato acima!
             </p>
           ) : (
             contacts.map((contact, index) => (
@@ -134,11 +154,11 @@ export function ConnectHub() {
                     {contact.nome}
                   </p>
 
-                  <p className="text-gray-700 text-sm break-all">
+                  <p className="text-sm break-all">
                     {contact.email}
                   </p>
 
-                  <p className="text-gray-700 text-sm">
+                  <p className="text-sm">
                     {contact.telefone}
                   </p>
                 </div>

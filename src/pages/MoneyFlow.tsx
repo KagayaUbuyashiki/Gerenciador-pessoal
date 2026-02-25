@@ -69,24 +69,25 @@ export function MoneyFlow() {
   const saldo = transactions.reduce((acc, t) => acc + t.valor, 0)
 
   return (
-    <div className="container-page">
+    <div className="page-container page-finance">
 
-      <div className="container-content">
+      <div className="page-header">
+        <h1 className="page-titulo">Controle financeiro</h1>
+        <p className="page-subtitulo">Controle suas finanças com simplicidade e clareza</p>
+      </div>
 
-        <h1 className="titulo-pagina">
-          Controle financeiro
-        </h1>
+      <div className="page-content">
 
-        <div className="card-principal mb-6 text-center">
-          <h2 className="text-lg font-semibold mb-3">
+        <div className="saldo-card">
+          <h2 className="text-sm font-semibold mb-2 text-gray-700">
             Saldo Total
           </h2>
 
           <p
             className={
               saldo >= 0
-                ? "text-3xl font-bold text-green-600"
-                : "text-3xl font-bold text-red-600"
+                ? "saldo-positivo"
+                : "saldo-negativo"
             }
           >
             R$ {saldo.toFixed(2)}
@@ -95,7 +96,7 @@ export function MoneyFlow() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="card-principal mb-6"
+          className="card-principal"
         >
 
           <input
@@ -150,8 +151,8 @@ export function MoneyFlow() {
         <div className="lista-itens">
 
           {transactions.length === 0 ? (
-            <p className="text-center text-gray-500 py-4">
-              Nenhuma transação registrada ainda
+            <p className="empty-state">
+              Nenhuma transação registrada ainda. Comece adicionando uma transação acima!
             </p>
           ) : (
             transactions.map((t, index) => (

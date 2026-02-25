@@ -79,13 +79,14 @@ export function TaskMaster() {
   }
 
   return (
-    <div className="container-page">
+    <div className="page-container page-tasks">
 
-      <div className="container-content">
+      <div className="page-header">
+        <h1 className="page-titulo">Gerenciador de tarefas</h1>
+        <p className="page-subtitulo">Organize suas tarefas e acompanhe seu progresso</p>
+      </div>
 
-        <h1 className="titulo-pagina">
-          Gerenciador de tarefas
-        </h1>
+      <div className="page-content">
 
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -132,8 +133,8 @@ export function TaskMaster() {
         <div className="lista-itens">
 
           {tasks.length === 0 ? (
-            <p className="text-center text-gray-500 py-4">
-              Nenhuma tarefa adicionada ainda
+            <p className="empty-state">
+              Nenhuma tarefa adicionada ainda. Comece adicionando uma tarefa acima!
             </p>
           ) : (
             tasks.map((task, index) => (
